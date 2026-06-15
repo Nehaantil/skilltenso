@@ -1,7 +1,10 @@
-  
 import React from 'react';
 
-function HeroSection() {
+interface HeroSectionProps {
+  onOpenModal: (mode: 'signin' | 'signup') => void;
+}
+
+function HeroSection({ onOpenModal }: HeroSectionProps) {
   return (
     <section className="text-center py-24 px-6">
       <h1 className="text-6xl font-bold mb-6">
@@ -14,10 +17,16 @@ function HeroSection() {
         Connect with learners worldwide through live video sessions. Share what you know, learn what you love.
       </p>
       <div className="flex gap-4 justify-center">
-        <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-500 rounded-xl text-lg font-semibold hover:shadow-xl hover:shadow-purple-500/40 transition-all">
+        <button
+          onClick={() => onOpenModal('signup')}
+          className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-500 rounded-xl text-lg font-semibold hover:shadow-xl hover:shadow-purple-500/40 transition-all"
+        >
           Start Learning Today ✨
         </button>
-        <button className="px-8 py-4 border-2 border-purple-500 rounded-xl text-lg font-semibold text-purple-400 hover:bg-purple-500 hover:text-white transition-all">
+        <button
+          onClick={() => onOpenModal('signin')}
+          className="px-8 py-4 border-2 border-purple-500 rounded-xl text-lg font-semibold text-purple-400 hover:bg-purple-500 hover:text-white transition-all"
+        >
           Already a Member?
         </button>
       </div>
