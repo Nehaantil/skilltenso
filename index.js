@@ -27,6 +27,8 @@ require('./src/db');
 // Routes
 const authRoutes = require('./src/routes/auth');
 app.use('/api/auth', authRoutes);
+const aiRoutes = require('./src/routes/ai');
+app.use('/api/ai', aiRoutes);
 
 // Test route
 app.get('/', (req, res) => {
