@@ -31,6 +31,20 @@ require('./src/db');
 // Routes
 const authRoutes = require('./src/routes/auth');
 app.use('/api/auth', authRoutes);
+const express = require('express');
+const router = express.Router();
+const { getAllUsers, getStats, deleteUser } = require('../controllers/adminController');
+
+// GET /api/admin/users
+router.get('/users', getAllUsers);
+
+// GET /api/admin/stats
+router.get('/stats', getStats);
+
+// DELETE /api/admin/users/:id
+router.delete('/users/:id', deleteUser);
+
+module.exports = router;
 const aiRoutes = require('./src/routes/ai');
 app.use('/api/ai', aiRoutes);
 
